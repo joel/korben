@@ -4,7 +4,8 @@ describe KcConfig do
   
   context "Simple Configuration" do
     before { KcConfig.load!( { foo: 'bar' } ) }
-    it { KcSettings[:foo].should eql 'bar' }
+    it { KcSettings.get(:foo).should eql 'bar' }
+    it { KcSettings.foo.should eql 'bar' }
   end
 
   context "Custom Configuration" do
@@ -17,5 +18,21 @@ describe KcConfig do
       KcConfig.const_name.should == "AnotherSettingConstantName"
     end
   end
+  
+  context "KcWrapper" do
+    let(:wrapper) { KcWrapper.new }
+    before { wrapper.set(:key, 'value') }
+    subject { wrapper.get(:key) }
+    
+    it "should have the value" do
+      should eql 'value'
+    end
 
+    context "have method" do
+      subject { wrapper }
+      its(:key) { should eql 'value' }
+    end
+  end
+    
 end
+
