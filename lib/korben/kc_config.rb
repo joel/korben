@@ -30,18 +30,15 @@ class KcWrapper
   end
 
   def load!(settings = {})
-    settings.each do |key, value|
-      set(key, value)
-    end
+    settings.each { |key, value| set(key, value) }
   end
 
   def set(key, value)
-    unset(key) if set?(key)
     define_accessor(key) { value }
     @settings[key] = value
   end
 
-  def set?(key)
+  def exist?(key)
     @settings.key?(key)
   end
   
@@ -52,7 +49,7 @@ class KcWrapper
   private
 
   def define_accessor(name, &block)
-    singleton_class.class_eval { define_method(name, &block) } if !respond_to?(name) || exists?(name)
+    singleton_class.class_eval { define_method(name, &block) } if !respond_to?(name) || exist?(name)
   end
 
   def singleton_class
