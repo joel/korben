@@ -18,8 +18,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add configuration to initializers files kc_config.rb
 
+    KcConfig.setup do |config| 
+      config.const_name = "MyConf"
+    end
+    MyConf.load!( { foo: 'bar' } )
+
+Anywhere in your code have access to
+
+    MyConf.foo => 'bar'
+        
 ## Contributing
 
 1. Fork it
