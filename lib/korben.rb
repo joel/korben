@@ -1,5 +1,2 @@
 require "korben/version"
-
-module Korben
-  # Your code goes here...
-end
+require "korben/kc_config"
