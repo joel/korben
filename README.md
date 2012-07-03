@@ -1,6 +1,6 @@
 # Korben
 
-TODO: Write a gem description
+A really simple configuration tool
 
 ## Installation
 
@@ -18,9 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-Add configuration to initializers files kc_config.rb
+Add configuration to initializers files k_config.rb
 
-    KcConfig.setup do |config| 
+    KConfig.setup do |config| 
       config.const_name = "MyConf"
     end
     MyConf.load!( { foo: 'bar' } )

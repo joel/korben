@@ -1,2 +1,2 @@
 require "korben/version"
-require "korben/kc_config"
+require "korben/k_config"
